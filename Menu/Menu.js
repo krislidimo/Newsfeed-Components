@@ -10,5 +10,26 @@ const menu = document.querySelector('.menu');
 const menuButton = document.querySelector('.menu-button');
 // Using your menuButton reference, add a click handler that calls toggleMenu
 menuButton.addEventListener('click', () => {
-	toggleMenu(menu);
+
+	//Animations GSAP
+	if(menu.classList.contains('menu--open')) { //if menu is open do this
+		TweenMax.to(".menu",1,{
+			left: -350,
+			opacity: 0,
+			onComplete: () => {
+				toggleMenu(menu)
+			}
+		});
+
+	} else {																		//if menu is closed do this
+		toggleMenu(menu);
+		TweenMax.to(".menu",1,{
+			left: -50,
+			ease:Back.easeOut, 
+  		opacity: 1,
+		});
+	}
 });
+
+
+
